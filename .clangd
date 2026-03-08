@@ -1,0 +1,43 @@
+CompileFlags:
+  # clangd 会优先使用 compile_commands.json（运行 cmake 后自动生成）
+  # 如果不存在 compile_commands.json，则使用以下默认配置
+  Add:
+    # CUDA support
+    - -xcuda
+    - --cuda-path=/usr/local/cuda
+    - -I/usr/local/cuda/include
+    # Include paths (相对于项目根目录)
+    - -I.
+    - -I./include
+    # C++ standard
+    - -std=c++17
+    # Common CUDA flags
+    - -D__CUDACC__
+    - -D__CUDA_ARCH__=750
+  Remove:
+    # Remove flags that might conflict
+    - -W*
+    - -m*
+    - -f*
+
+Diagnostics:
+  UnusedIncludes: None
+  MissingIncludes: None
+  # 启用更多诊断以帮助跳转
+  ClangTidy:
+    Add: [readability-*, performance-*]
+    Remove: [readability-magic-numbers]
+
+Index:
+  Background: Build
+  # 启用后台索引以支持快速跳转
+  StandardLibrary: Yes
+
+Completion:
+  AllScopes: Yes
+
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+

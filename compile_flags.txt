@@ -1,0 +1,12 @@
+-xcuda
+--cuda-path=/usr/local/cuda
+-I/usr/local/cuda/include
+-I.
+-I./include
+-std=c++17
+-D__CUDACC__
+-D__CUDA_ARCH__=750
+-G
+-g
+-lineinfo
+
