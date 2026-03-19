@@ -56,6 +56,8 @@ add_kernel_executable(vector_add)
 add_kernel_executable(matrix_transpose)
 add_kernel_executable(flash_attn)
 add_kernel_executable(parallel_reduction)
+add_kernel_executable(gemm)
+target_link_libraries(gemm PRIVATE CUDA::cublas)
 
 # Reduction benchmark (NVIDIA-style 4M element performance table)
 add_executable(reduction_benchmark src/parallel_reduction/reduction_benchmark.cu)

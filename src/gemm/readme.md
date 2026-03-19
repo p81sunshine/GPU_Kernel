@@ -1,0 +1,1 @@
+Here, A and B is row major.
